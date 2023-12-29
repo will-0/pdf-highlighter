@@ -7,8 +7,11 @@ const generalStateSlice = createSlice({
   name: 'general',
   initialState,
   reducers: {
-    setExampleStateItem(state, action: PayloadAction<string>) {
-      state.exampleStateItem = action.payload
+    setPdfUrl(state, action: PayloadAction<string>) {
+      state.pdfUrl = action.payload
+    },
+    setMargins(state, action: PayloadAction<{ top: number, left: number }>) {
+      state.margins = action.payload
     },
     reset() {
       return {

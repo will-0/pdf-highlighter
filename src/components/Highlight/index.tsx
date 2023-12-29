@@ -1,7 +1,7 @@
 import { IHighlight, LTWHP } from "react-pdf-highlighter";
 import { scaledToViewport } from "react-pdf-highlighter/dist/esm/lib/coordinates";
 import { Scaled } from "react-pdf-highlighter"
-import { GeneralSelectors } from "./state/general";
+import { GeneralSelectors } from "@state/general";
 import { useSelector } from "react-redux";
 
 interface HighlightProps {

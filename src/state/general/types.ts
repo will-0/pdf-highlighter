@@ -1,3 +1,7 @@
 export type GeneralState = {
-    exampleStateItem: string | null;
+    pdfUrl: string;
+    margins: {
+        top: number;
+        left: number;
+    };
 }

@@ -1,4 +1,4 @@
-import { guidGenerator } from "./common/id";
+import { guidGenerator } from "../../utils/id";
 import { PDFViewer } from "pdfjs-dist/types/web/pdf_viewer"
 import { getPagesFromRange } from 'react-pdf-highlighter/dist/esm/lib/pdfjs-dom';
 import getClientRects from 'react-pdf-highlighter/dist/esm/lib/get-client-rects';
@@ -11,10 +11,10 @@ import { Provider } from "react-redux";
 // Types
 import { LTWHP } from 'react-pdf-highlighter/dist/esm/types';
 
-import HighlightLayer from "./HighlightLayer";
-import store from "./state"
-import { ContentActions } from "./state/content";
-import { GeneralActions } from "./state/general";
+import HighlightLayer from "@components/HighlightLayer";
+import store from "@state/index"
+import { ContentActions } from "@state/content";
+import { GeneralActions } from "@state/general";
 
 interface ViewportPosition {
     boundingRect: LTWHP;
@@ -190,7 +190,7 @@ namespace highlighter {
             ReactDOM.createRoot(containerDiv).render(
                 <React.StrictMode>
                     <Provider store={store}>
-                        <HighlightLayer viewport={viewport} />
+                        <HighlightLayer pagenumber={pages[0].number} viewport={viewport} />
                     </Provider>
                 </React.StrictMode>
             )

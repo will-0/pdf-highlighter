@@ -1,5 +1,6 @@
 import { GeneralState } from "./types"
 
 export const GeneralSelectors = {
-    getExampleStateItme: (state: any) => (state.general as GeneralState).exampleStateItem,
+    getPdfUrl: (state: any) => (state.general as GeneralState).pdfUrl,
+    getMargins: (state: any) => (state.general as GeneralState).margins,
 }

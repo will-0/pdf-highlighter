@@ -1,5 +1,6 @@
-import PnIcon from "./icon"
-import highlighter from "./highlighter"
+import PnIcon from "./components/Icon"
+import highlighter from "@components/Highlighter"
+import { debounce } from "lodash"
 
 function iconClickHandler(_: PnIcon, __: any) {
     highlighter.highlightSelection(); // Highlight the selection
@@ -18,9 +19,11 @@ function mouseupListener(_: any) {
     }
 }
 
+const debouncedMouseupListener = debounce(mouseupListener, 100)
+
 async function init() {
     // Instantiate the store and set to the global variable
-    document.addEventListener('mouseup', mouseupListener)
+    document.addEventListener('mouseup', debouncedMouseupListener)
 }
 
 init();

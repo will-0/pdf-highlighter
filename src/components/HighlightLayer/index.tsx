@@ -1,19 +1,15 @@
-import { useEffect } from "react"
-import Highlight from "./Highlight"
-import { ContentSelectors } from "./state/content"
+import Highlight from "@components/Highlight"
+import { ContentSelectors } from "@state/content"
 import { useSelector } from "react-redux"
 
 interface HighlightLayerProps {
     viewport: any
+    pagenumber: number
 }
 
-export default function HighlightLayer({ viewport }: HighlightLayerProps) {
+export default function HighlightLayer({ viewport, pagenumber }: HighlightLayerProps) {
 
     const highlights = useSelector(ContentSelectors.getHiglights)
-
-    useEffect(() => {
-        console.log("Highlights: ", highlights)
-    }, [highlights])
 
     return (
         <div
@@ -29,6 +25,7 @@ export default function HighlightLayer({ viewport }: HighlightLayerProps) {
             className="SynapcardHighlightLayer"
         >
         {highlights.map((highlight, index) => {
+            if (highlight.position.pageNumber === pagenumber)
             return (
                 <Highlight viewport={viewport} key={index} highlight={highlight} />
             )}
