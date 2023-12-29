@@ -24,6 +24,7 @@ export default function HighlightLayer({ viewport, pagenumber }: HighlightLayerP
             }}
             className="SynapcardHighlightLayer"
         >
+        <button style={{pointerEvents: "auto"}} onClick={() => console.log(highlights)}>log</button>
         {highlights.map((highlight, index) => {
             if (highlight.position.pageNumber === pagenumber)
             return (

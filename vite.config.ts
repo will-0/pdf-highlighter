@@ -6,6 +6,23 @@ import { fileURLToPath } from 'url'
 // Convert the URL to a directory path
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+function transformWebpackIgnore() {
+  return {
+    name: 'transform-webpack-ignore', // this name will show up in warnings and errors
+    transform(code, id) {
+      // This regex looks for the specific pattern of the webpackIgnore directive
+      const webpackIgnoreRegex = /\/\* webpackIgnore: true \*\//g;
+
+      // Check if the current file contains the webpackIgnore directive
+      if (webpackIgnoreRegex.test(code)) {
+        // Replace the webpackIgnore directive with vite-ignore
+        return code.replace(webpackIgnoreRegex, '/* @vite-ignore */');
+      }
+      return code;
+    }
+  };
+}
+
 function mockNodeModules() {
   return {
     name: 'mock-node-modules',
@@ -24,7 +41,7 @@ function mockNodeModules() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), mockNodeModules()],
+  plugins: [react(), mockNodeModules(), transformWebpackIgnore()],
   server: {
     proxy: {
       '/api': {
