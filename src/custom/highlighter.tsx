@@ -3,7 +3,7 @@ import { PDFViewer } from "pdfjs-dist/types/web/pdf_viewer"
 import { getPagesFromRange } from 'react-pdf-highlighter/dist/esm/lib/pdfjs-dom';
 import getClientRects from 'react-pdf-highlighter/dist/esm/lib/get-client-rects';
 import getBoundingRect from 'react-pdf-highlighter/dist/esm/lib/get-bounding-rect';
-import { scaledToViewport, viewportToScaled } from 'react-pdf-highlighter/dist/esm/lib/coordinates';
+import { viewportToScaled } from 'react-pdf-highlighter/dist/esm/lib/coordinates';
 import ReactDOM from 'react-dom/client'
 import React from "react";
 import { Provider } from "react-redux";
@@ -15,26 +15,6 @@ import HighlightLayer from "./HighlightLayer";
 import store from "./state"
 import { ContentActions } from "./state/content";
 import { GeneralActions } from "./state/general";
-
-const getClientRectsFromRects = (rects: any, pages: any) => {
-    const clientRects = [];
-    for (const rect of rects) {
-      for (const page of pages) {
-        const pageRect = page.node.getBoundingClientRect();
-        if (rect.pageNumber === page.number) {
-          const clientRect = {
-            top: rect.top - page.node.scrollTop + pageRect.top,
-            left: rect.left - page.node.scrollLeft + pageRect.left,
-            width: rect.width,
-            height: rect.height,
-            pageNumber: page.number,
-          };
-          clientRects.push(clientRect);
-        }
-      }
-    }
-    return clientRects;
-  };
 
 interface ViewportPosition {
     boundingRect: LTWHP;

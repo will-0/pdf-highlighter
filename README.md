@@ -1,32 +1,11 @@
-# React + TypeScript + Vite
+# PDF Highlighter
 
-*The vast majority of this template arises simply from calling `npm create vite@latest` (see [Getting Started | Vite](https://vitejs.dev/guide/)), and using a React template with Typescript + SWC. The additional minor changes are simply personal preference.*
+This project builds off of [PDF.JS](https://github.com/mozilla/pdf.js) and [react-pdf-highlighter](https://github.com/agentcooper/react-pdf-highlighter).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Get Started
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Run `npm install`
+2. Download PDFJS compiled files, and add the folder to root as `pdfjs`. This distribution can be downloaded from [https://github.com/mozilla/pdf.js/releases](https://github.com/mozilla/pdf.js/releases)
+3. Copy the `/build` folder from PDFJS and put it into the `/public` folder (yes, it will mean having it twice).
+4. Add example PDFs to the `/public` folder.
+4. `npm run dev` to test the highlighter. It will be available at `http://localhost:5173/pdfjs/web/viewer.html?file=/your_example_pdf.pdf` (port number may vary: check terminal)

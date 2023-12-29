@@ -2,8 +2,7 @@ import PnIcon from "./icon"
 import highlighter from "./highlighter"
 
 function iconClickHandler(_: PnIcon, __: any) {
-    const highlight_id = highlighter.highlightSelection("rgba(146, 255, 170, 1)", document, highlighter.HighlElOptions.CUSTOM); // Highlight the selection
-    console.log("Icon clicked")
+    highlighter.highlightSelection(); // Highlight the selection
 }
 
 function mouseupListener(_: any) {

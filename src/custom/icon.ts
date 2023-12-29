@@ -8,7 +8,7 @@ class PnIcon {
     private static lastInstanceTime: number | null = null;
     private static cooldownPeriod: number = 500; // 500 milliseconds
 
-    HIGHLIGHTER_ICON_PATH = "/snap-black-orange-bg-32.png"
+    HIGHLIGHTER_ICON_PATH = "/example-icon.png"
     icon: HTMLImageElement
 
     constructor(coordinates: coordinate, doc: Document = document) {
